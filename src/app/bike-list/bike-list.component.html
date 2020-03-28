@@ -1,0 +1,6 @@
+<ul>
+    <li *ngFor="let bike of (bikes$ | async)">
+        <p>{{bike.name}}</p>
+        <app-bike [_bike]="bike"></app-bike>
+    </li>
+</ul>

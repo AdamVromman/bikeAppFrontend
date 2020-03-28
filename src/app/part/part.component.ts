@@ -7,12 +7,12 @@ import { Part } from '../part/part.model';
 })
 export class PartComponent implements OnInit {
 
-    _part: Part;
+    @Input() public _part: Part;
 
 
   constructor() { 
 
-    this._part = new Part("TEST", "Dit is een test");
+    
 
   }
 

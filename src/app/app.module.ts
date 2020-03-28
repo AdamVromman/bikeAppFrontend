@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { PartModule } from './part/part.module';
 
 
+
+
+
 @NgModule({
   declarations: [
-    AppComponent,
-    
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+<div>
+    <div fxLayout="row wrap"
+    fxLayout.xs="column"
+    fxLayoutGap="0.5%"
+    fxLayoutAlign="start" >
+      <div fxFlex="0 0 calc(25%-0.5%)"
+        *ngFor="let localpart of _bike.parts"
+      >
+        <app-part [_part]="localpart"></app-part>
+      </div>
+    </div>
+  </div>
