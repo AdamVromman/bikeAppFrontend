@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, EMPTY } from 'rxjs';
 import { Bike } from '../bike/bike.model';
 import { BikeDataService } from '../bike-data.service';
+import { catchError } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bike-list',
@@ -10,7 +11,8 @@ import { BikeDataService } from '../bike-data.service';
 })
 export class BikeListComponent implements OnInit {
 
-  private _fetchBikes$: Observable<Bike[]> = this._bikeDataService.bikes$;
+  private _fetchBikes$: Observable<Bike[]>;
+  private _errorMessage: string;
 
   constructor(private _bikeDataService: BikeDataService)
    { }
@@ -20,7 +22,23 @@ export class BikeListComponent implements OnInit {
      return this._fetchBikes$;
    }
 
+   get errorMessage(): string
+   {
+      return this._errorMessage;
+   }
+
   ngOnInit(): void {
+
+    this._fetchBikes$ = this._bikeDataService.bikes$.pipe
+    (
+      catchError(err => 
+        {
+          this._errorMessage = err; 
+          return EMPTY;
+        })
+    );
+
+
   }
 
 }

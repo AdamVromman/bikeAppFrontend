@@ -3,8 +3,8 @@ interface PartJson
 
     name: string;
     description: string;
-    isOptional: boolean;
     functionality: Number;
+    isOptional: boolean;
     dependantParts: Part[];
     
 
