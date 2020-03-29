@@ -1,11 +1,13 @@
 interface PartJson
 {
 
+    id: number;
     name: string;
     description: string;
-    functionality: Number;
+    functionality: string;
     isOptional: boolean;
-    dependantParts: Part[];
+    dependantParts: string[];
+    dominantParts: string[];
     
 
 }
@@ -13,30 +15,26 @@ interface PartJson
 export class Part
 {
     constructor(
+        private _id: number,
         private _name:string,
         private _description:string,
         private _isOptional: boolean,
         private _functionality: string,
-        private _dependantParts : Part[])
+        private _dependantParts: string[],
+        private _dominantParts: string[])
     {
 
     }
 
     static fromJSON(json: PartJson): Part
     {
-        const part = new Part(json.name, json.description, json.isOptional, Part.setFunc(json.functionality), json.dependantParts)
+        const part = new Part(json.id, json.name, json.description, json.isOptional, json.functionality, json.dependantParts, json.dominantParts)
         return part;
     }
 
-    static setFunc(n: Number): string
+    get id(): number
     {
-        switch(n)
-        {
-            case 0: return "Aandrijving"; 
-            case 1: return "Remmen"; 
-            case 2: return "Sturen"; 
-            default: return "Varia"; 
-        }
+        return this._id;
     }
 
     get name(): string
@@ -59,9 +57,14 @@ export class Part
         return this._functionality;
     }
 
-    get dependantParts(): Part[]
+    get dependantParts(): string[]
     {
         return this._dependantParts;
+    }
+
+    get dominantParts(): string[]
+    {
+        return this._dominantParts;
     }
 }
 

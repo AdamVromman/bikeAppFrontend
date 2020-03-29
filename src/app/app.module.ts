@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PartModule } from './part/part.module';
+import { BikeModule } from './bike/bike.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +17,8 @@ import { PartModule } from './part/part.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MaterialModule, PartModule
+    MaterialModule, BikeModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

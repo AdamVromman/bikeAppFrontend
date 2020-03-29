@@ -33,5 +33,9 @@ export class Bike
     {
         return this._parts;
     }
+    get type(): string
+    {
+        return this._type;
+    }
 
 }

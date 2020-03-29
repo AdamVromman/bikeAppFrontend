@@ -1,26 +1,27 @@
 import { Injectable } from '@angular/core';
+import { AddedPart } from './addedPart.model';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Bike } from './bike/bike.model';
 import { environment } from 'src/environments/environment';
-import { tap, map, catchError, delay } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class BikeDataService {
-  private _bikes$: Observable<Bike[]>;
+export class AddedPartDataService {
+  private _addedParts$: Observable<AddedPart[]>
+  
 
   constructor(
     private http: HttpClient
   ) { }
 
-  public get bikes$(): Observable<Bike[]>
+  public get addedParts$(): Observable<AddedPart[]>
   {
-    return this.http.get(`${environment.apiUrl}/bikes/`).pipe(
+    return this.http.get(`${environment.apiUrl}/addedparts/`).pipe
+    (
       catchError(this.handleError),
-      tap(console.log),
-      map((list: any[]): Bike[] => list.map(Bike.fromJSON) )
+      map((list: any[]):AddedPart[] => list.map(AddedPart.fromJson))
     );
   }
 
@@ -35,4 +36,3 @@ export class BikeDataService {
     return throwError(errorMessage);
   }
 }
-

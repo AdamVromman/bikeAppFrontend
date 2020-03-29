@@ -4,23 +4,13 @@
     fxLayoutGap="0.5%"
     fxLayoutAlign="start" >
     <ul>
-      <p *ngFor="let localpart of _bike.parts" (mouseover)="selectPart(localpart)" (mouseleave)="deselectPart">{{localpart.name}}</p>
+      <p *ngFor="let localpart of _bike.parts" (mouseenter)="selectPart(localpart)" >{{localpart.name}}</p>
     </ul>
+    <mat-card *ngIf="selectedPart">
+     <app-part [_part]="selectedPart"></app-part>
+    </mat-card> 
+    
+  
     </div>
   </div>
-  <mat-card *ngIf="selectedPart">
-    <mat-card-header>
-      <mat-card-title> <mat-icon>directions_bike</mat-icon> {{selectedPart.name}} </mat-card-title>
-      <mat-card-subtitle><strong>beschrijving: </strong>{{selectedPart.description}} </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-     <mat-list>
-       <mat-list-item><strong>functionaliteit: </strong>{{selectedPart.functionality}}</mat-list-item>
-       <mat-list-item><strong>optioneel: </strong>{{selectedPart.isOptional}}</mat-list-item>
-       <mat-list-item *ngFor="let part of selectedPart.dependantParts">
-        <strong>naam: </strong> {{part.name}},<span> </span><strong>beschrijving: </strong> {{part.description}}
-       </mat-list-item>
-     </mat-list>
-    </mat-card-content>
-  </mat-card> 
   

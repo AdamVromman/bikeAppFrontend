@@ -3,6 +3,7 @@
 <ul>
     <li *ngFor="let bike of (bikes)">
         <p>{{bike.name}}</p>
+        <p>{{bike.type}}</p>
         <app-bike [_bike]="bike"></app-bike>
     </li>
 </ul>

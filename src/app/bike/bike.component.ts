@@ -12,7 +12,7 @@ import { Part } from '../part/part.model';
 export class BikeComponent implements OnInit {
 
   @Input() public _bike : Bike;
-  private _selectedPart: Part = new Part("", "", false, "", new Array<Part>());
+  private _selectedPart: Part = new Part(null ,"", "", null, "", new Array<string>(),new Array<string>());
   
   constructor(){}
 
@@ -26,7 +26,7 @@ export class BikeComponent implements OnInit {
 
   deselectPart()
   {
-    this._selectedPart = new Part("", "", false, "", new Array<Part>());
+    this._selectedPart = new Part(null, "", "", null, "", new Array<string>(), new Array<string>());
   }
 
   get selectedPart(): Part

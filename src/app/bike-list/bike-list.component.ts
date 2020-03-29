@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, EMPTY } from 'rxjs';
 import { Bike } from '../bike/bike.model';
-import { BikeDataService } from '../bike-data.service';
+import { BikeDataService } from '../bike/bike-data.service';
 import { catchError } from 'rxjs/operators';
 
 @Component({
