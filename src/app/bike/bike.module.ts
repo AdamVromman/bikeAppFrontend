@@ -4,17 +4,19 @@ import { PartComponent } from '../part/part.component';
 import { MaterialModule } from '../material/material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BikeComponent } from './bike.component';
-import { DependantPartComponent } from '../dependant-part/dependant-part.component';
 import { BikeListComponent } from '../bike-list/bike-list.component';
 import { AddedpartsFilterPipe } from '../added-part/addedparts-filter.pipe';
 import { AddedPartComponent } from '../added-part/added-part.component';
+import { AddAddedPartComponent } from '../add-added-part/add-added-part.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
 
 
 
 
 @NgModule({
-  declarations: [BikeListComponent, BikeComponent,PartComponent, DependantPartComponent, AddedpartsFilterPipe, AddedPartComponent],
-  imports: [CommonModule, MaterialModule, HttpClientModule],
+  declarations: [BikeListComponent, BikeComponent,PartComponent, AddedpartsFilterPipe, AddedPartComponent, AddAddedPartComponent],
+  imports: [CommonModule, MaterialModule, HttpClientModule, ReactiveFormsModule, FormsModule],
   exports: [BikeListComponent]
 })
 export class BikeModule { }

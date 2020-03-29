@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
+import { MatFormFieldModule} from '@angular/material/form-field'
 
 
 
@@ -18,7 +19,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
     MatListModule,
     MatCardModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatFormFieldModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -26,7 +28,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'
     MatListModule,
     MatCardModule,
     MatIconModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatFormFieldModule
   ]
 })
 export class MaterialModule { }

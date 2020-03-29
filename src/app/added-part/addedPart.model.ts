@@ -16,6 +16,7 @@ export class AddedPart
         private _price: Number,
         private _part: Part
     ){}
+   
 
     static fromJson(json: AddedPartJson): AddedPart
     {

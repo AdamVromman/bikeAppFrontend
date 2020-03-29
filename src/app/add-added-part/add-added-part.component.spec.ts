@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DependantPartComponent } from './dependant-part.component';
+import { AddAddedPartComponent } from './add-added-part.component';
 
-describe('DependantPartComponent', () => {
-  let component: DependantPartComponent;
-  let fixture: ComponentFixture<DependantPartComponent>;
+describe('AddAddedPartComponent', () => {
+  let component: AddAddedPartComponent;
+  let fixture: ComponentFixture<AddAddedPartComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DependantPartComponent ]
+      declarations: [ AddAddedPartComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DependantPartComponent);
+    fixture = TestBed.createComponent(AddAddedPartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
