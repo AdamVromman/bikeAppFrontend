@@ -6,10 +6,11 @@
     fxLayout.xs="column"
     fxLayoutGap="0.5%"
     fxLayoutAlign="start" >
-    <ul>
-      <p *ngFor="let localpart of _bike.parts" (mouseenter)="selectPart(localpart)" >{{localpart.name}}</p>
-    </ul>
-    <div *ngIf="selectedPart">
+      <span *ngFor="let localpart of _bike.parts" (mouseenter)="selectPart(localpart)" >{{localpart.name}}</span>
+    <div id="omkadering">
+      <app-part-image (selectedPart)=selectPart($event) *ngFor="let localpart of _bike.parts" [part]=localpart></app-part-image>
+    </div>
+      <div *ngIf="selectedPart">
      <app-part [_part]="selectedPart"></app-part>
     </div> 
      <app-add-added-part [_Parts]= "(fetchParts$ | async)"></app-add-added-part>

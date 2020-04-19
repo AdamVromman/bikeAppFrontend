@@ -1,0 +1,89 @@
+img
+{
+    position: absolute;
+}
+.Kader
+{
+    left:161px;
+    top:127px;
+    transform: rotate(5.17deg);
+    z-index: 2;
+}
+
+.Voorwiel
+{
+    left:412.5px;
+    top:206.5px;
+    z-index: 0;
+}
+
+.Zadel
+{
+    left: 196.85px;
+    top: 77.70px;
+    z-index: 0;
+}
+
+.Zadelpen
+{
+    left:234px;
+    top:90.5px;
+    z-index: 1;
+    transform: rotate(5.17deg);
+}
+
+.Stuurpen
+{
+    left:465.05px;
+    top:102.01px;
+    z-index: 0;
+    
+}
+
+.Stuur
+{
+    left:481px;
+    top:105.67px;
+    z-index: 3;
+}
+
+.Achterwiel
+{
+    left:22.5px;
+    top:206.5px;
+    z-index: 0;
+}
+
+.Buitenband
+{
+    left:17px;
+    top:201px;
+    z-index: 0;
+}
+
+.Crankset
+{
+    left:263.32px;
+    top:287.45px;
+    z-index: 3;
+}
+
+.Ketting
+{
+    left:136.05px;
+    top:309.08px;
+    z-index: 4;
+}
+
+.Voorvork
+{
+    left:483.64px;
+    top:188.24px;
+    z-index: 3;
+}
+
+.Achtertandwiel
+{
+    left:141.19px;
+    top:321.84px;
+}

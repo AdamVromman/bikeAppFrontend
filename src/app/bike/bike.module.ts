@@ -11,6 +11,7 @@ import { AddAddedPartComponent } from '../add-added-part/add-added-part.componen
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { PartFilterPipe } from '../part/part-filter.pipe';
 import { LoginComponent } from '../login/login.component';
+import { PartImageComponent } from '../part-image/part-image.component';
 
 
 
@@ -25,7 +26,7 @@ import { LoginComponent } from '../login/login.component';
     AddedPartComponent, 
     AddAddedPartComponent, 
     PartFilterPipe, 
-    LoginComponent],
+    LoginComponent, PartImageComponent],
   imports: [CommonModule, MaterialModule, HttpClientModule, ReactiveFormsModule, FormsModule],
   exports: [BikeListComponent]
 })

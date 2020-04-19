@@ -15,9 +15,11 @@ import { catchError } from 'rxjs/operators';
 export class BikeComponent implements OnInit {
   
   private _fetchParts$: Observable<Part[]>
+  
   @Input() public _bike : Bike;
   private _selectedPart: Part = new Part(null, new Array<number>(), "", "", null, "", new Array<string>(),new Array<string>());
-  
+  public imgSrc: String = "";
+
   constructor(
     private _partsDataService: PartDataService
   ){}
@@ -39,11 +41,17 @@ export class BikeComponent implements OnInit {
   selectPart(part: Part)
   {
     this._selectedPart = part;
+   
+  }
+
+  bold()
+  {
+    this.imgSrc = "Selected";
   }
 
   deselectPart()
   {
-    this._selectedPart = new Part(null, new Array<number>(), "", "", null, "", new Array<string>(), new Array<string>());
+    this.imgSrc = "";
   }
 
   get selectedPart(): Part

@@ -16,6 +16,7 @@ export class PartComponent implements OnInit {
     public filterAddedParts$ = new Subject<string>();
     private _fetchAddedParts$: Observable<AddedPart[]>;
     private _errorMessage: string;
+    
 
   constructor(private _AddedPartDataService: AddedPartDataService) { 
 
@@ -33,7 +34,6 @@ export class PartComponent implements OnInit {
   {
     return this._errorMessage
   }
-
   ngOnInit(): void {
 
     this._fetchAddedParts$ = this._AddedPartDataService.addedParts$.pipe
@@ -44,6 +44,7 @@ export class PartComponent implements OnInit {
             return EMPTY;
           })
     );
+
 
   }
 
