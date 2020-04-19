@@ -4,43 +4,59 @@ interface AddedPartJson
 {
     name: string;
     brand: string;
-    price: Number;
-    part: Part;
+    price: number;
+    partId: number;
+    email: string;
+    link: string;
 }
 
 export class AddedPart
 {
     constructor(
-        private _name: string,
-        private _brand: string,
-        private _price: Number,
-        private _part: Part
+        private name: string,
+        private brand: string,
+        private price: number,
+        private partId: number,
+        private email: string,
+        private link: string
     ){}
    
 
     static fromJson(json: AddedPartJson): AddedPart
     {
-        let part = new AddedPart(json.name, json.brand, json.price, json.part);
+        let part = new AddedPart(json.name, json.brand, json.price, json.partId, json.email, json.link);
         return part;
     }
 
-    get part(): Part
+   
+
+    get getPartId(): number
     {
-        return this._part;
+        return this.partId;
     }
 
-    get name(): string
+    get getName(): string
     {
-        return this._name;
+        return this.name;
     }
 
-    get brand(): string
+    get getBrand(): string
     {
-        return this._brand;
+        return this.brand;
     }
 
-    get price(): Number
+    get getPrice(): Number
     {
-        return this._price;
+        return this.price;
+    
+    }
+    get getLink(): string
+    {
+        return this.link;
+    }
+
+    get getEmail(): string
+    {
+        return this.email;
     }
 }

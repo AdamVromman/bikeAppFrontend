@@ -3,13 +3,59 @@
     <mat-card-content>
       <form [formGroup]="addedPart" (ngSubmit)="onSubmit()">
         <mat-form-field>
-          <input
-            matInput
-            aria-label="name"
-            placeholder="name"
-            type="text"
-            formControlName = "name"
-          />
+          <input matInput aria-label="name" placeholder="name" type="text" formControlName = "name"/>
+          <mat-error
+          *ngIf="addedPart.get('name')['errors'] && 
+            addedPart.get('name').touched"
+        >
+          {{ getErrorMessage(addedPart.get('name')['errors']) }}
+        </mat-error>
+ 
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput aria-label="brand" placeholder="brand" type="text" formControlName = "brand"/>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput aria-label="price" placeholder="price" type="number" formControlName = "price"/>
+          <mat-error
+          *ngIf="addedPart.get('price')['errors'] && 
+            addedPart.get('price').touched"
+        >
+          {{ getErrorMessage(addedPart.get('price')['errors']) }}
+        </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput aria-label="email" placeholder="email" type="email" formControlName = "email"/>
+          <mat-error
+          *ngIf="addedPart.get('email')['errors'] && 
+            addedPart.get('email').touched"
+        >
+          {{ getErrorMessage(addedPart.get('email')['errors']) }}
+        </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput aria-label="link" placeholder="link" type="text" formControlName = "link"/>
+          <mat-error
+          *ngIf="addedPart.get('link')['errors'] && 
+            addedPart.get('link').touched"
+        >
+          {{ getErrorMessage(addedPart.get('link')['errors']) }}
+        </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+        <mat-select placeholder="part" aria-label="part" formControlName = "part">
+          <div *ngFor="let part of _Parts">
+            <mat-option  [value]="part.id">
+              {{part.name}}
+            </mat-option>
+          </div>
+        </mat-select>
+        <mat-error
+          *ngIf="addedPart.get('part')['errors'] && 
+            addedPart.get('part').touched"
+        >
+          {{ getErrorMessage(addedPart.get('part')['errors']) }}
+        </mat-error>
         </mat-form-field>
         <button mat-raised-button type="submit">
           add part

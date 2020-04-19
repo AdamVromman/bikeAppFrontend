@@ -1,27 +1,29 @@
 import { Injectable } from '@angular/core';
-import { AddedPart } from './addedPart.model';
 import { Observable, throwError } from 'rxjs';
+import { Part } from './part.model';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map, catchError } from 'rxjs/operators';
+import { catchError, tap, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AddedPartDataService {
-  private _addedParts$: Observable<AddedPart[]>
+export class PartDataService {
+
   
 
   constructor(
     private http: HttpClient
-  ) { }
+  ) 
+  { }
 
-  public get addedParts$(): Observable<AddedPart[]>
+  public get parts$(): Observable<Part[]>
   {
-    return this.http.get(`${environment.apiUrl}/addedparts/`).pipe
+    return this.http.get(`${environment.apiUrl}/parts/`).pipe
     (
       catchError(this.handleError),
-      map((list: any[]):AddedPart[] => list.map(AddedPart.fromJson))
+      tap(console.log),
+      map((list: any[]): Part[] => list.map(Part.fromJSON) )
     );
   }
 
@@ -37,3 +39,5 @@ export class AddedPartDataService {
   }
 
 }
+
+

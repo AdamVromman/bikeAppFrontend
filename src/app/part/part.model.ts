@@ -2,6 +2,7 @@ interface PartJson
 {
 
     id: number;
+    bikeid: number[],
     name: string;
     description: string;
     functionality: string;
@@ -16,6 +17,7 @@ export class Part
 {
     constructor(
         private _id: number,
+        private _Bikeid: number[],
         private _name:string,
         private _description:string,
         private _isOptional: boolean,
@@ -28,13 +30,18 @@ export class Part
 
     static fromJSON(json: PartJson): Part
     {
-        const part = new Part(json.id, json.name, json.description, json.isOptional, json.functionality, json.dependantParts, json.dominantParts)
+        const part = new Part(json.id, json.bikeid, json.name, json.description, json.isOptional, json.functionality, json.dependantParts, json.dominantParts)
         return part;
     }
 
     get id(): number
     {
         return this._id;
+    }
+
+    get bikeId(): number[]
+    {
+        return this._Bikeid;
     }
 
     get name(): string

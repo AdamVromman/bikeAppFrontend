@@ -1,6 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Bike } from './bike.model';
 import { Part } from '../part/part.model';
+import { PartDataService } from '../part/part-data.service';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 
 
@@ -10,13 +13,27 @@ import { Part } from '../part/part.model';
   styleUrls: ['./bike.component.css']
 })
 export class BikeComponent implements OnInit {
-
-  @Input() public _bike : Bike;
-  private _selectedPart: Part = new Part(null ,"", "", null, "", new Array<string>(),new Array<string>());
   
-  constructor(){}
+  private _fetchParts$: Observable<Part[]>
+  @Input() public _bike : Bike;
+  private _selectedPart: Part = new Part(null, new Array<number>(), "", "", null, "", new Array<string>(),new Array<string>());
+  
+  constructor(
+    private _partsDataService: PartDataService
+  ){}
+
+  get fetchParts$(): Observable<Part[]>
+  {
+    return this._fetchParts$;
+  }
 
   ngOnInit(): void {
+
+    this._fetchParts$ = this._partsDataService.parts$.pipe
+    (
+      
+    );
+
   }
 
   selectPart(part: Part)
@@ -26,7 +43,7 @@ export class BikeComponent implements OnInit {
 
   deselectPart()
   {
-    this._selectedPart = new Part(null, "", "", null, "", new Array<string>(), new Array<string>());
+    this._selectedPart = new Part(null, new Array<number>(), "", "", null, "", new Array<string>(), new Array<string>());
   }
 
   get selectedPart(): Part

@@ -8,7 +8,17 @@ import { AddedPart } from './addedPart.model';
 export class AddedpartsFilterPipe implements PipeTransform {
 
   transform(addedParts: AddedPart[], part: number): AddedPart[] {
-    return addedParts.filter(a => a.part.id == part);
+
+    if (addedParts != null)
+    {
+      return addedParts.filter(a => a.getPartId == part);
+    }
+    else
+    {
+      return new Array<AddedPart>();
+    }
+
+    
     
   }
 

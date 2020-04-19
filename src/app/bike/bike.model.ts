@@ -3,6 +3,7 @@ import { Part } from '../part/part.model';
 
 interface BikeJson
 {
+    id: number
     name: string
     type: string
     parts: Part[]
@@ -12,6 +13,7 @@ interface BikeJson
 export class Bike
 {
     constructor(
+        private _id: number,
         private _name: string,
         private _type: string,
         private _parts: Part[]
@@ -20,8 +22,13 @@ export class Bike
 
     static fromJSON(json: BikeJson): Bike
     {
-        const bike = new Bike(json.name, json.type, json.parts)
+        const bike = new Bike(json.id, json.name, json.type, json.parts)
         return bike;
+    }
+
+    get id(): number
+    {
+        return this._id;
     }
 
     get name(): string

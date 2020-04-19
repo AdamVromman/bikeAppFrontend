@@ -1,5 +1,10 @@
 
-<p>TEST</p>
-<p>{{_addedPart.name}}</p>
-<p>{{_addedPart.brand}}</p>
-<p>{{_addedPart.price}}</p>
+<mat-card>
+    <mat-card-title>{{_addedPart.getName}}</mat-card-title>
+    <mat-list>
+        <mat-list-item>{{_addedPart.getBrand}}</mat-list-item>
+        <mat-list-item>{{_addedPart.getPrice}}</mat-list-item>
+    </mat-list>
+    
+</mat-card>
+
