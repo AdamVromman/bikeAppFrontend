@@ -25,15 +25,6 @@
         </mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input matInput aria-label="email" placeholder="email" type="email" formControlName = "email"/>
-          <mat-error
-          *ngIf="addedPart.get('email')['errors'] && 
-            addedPart.get('email').touched"
-        >
-          {{ getErrorMessage(addedPart.get('email')['errors']) }}
-        </mat-error>
-        </mat-form-field>
-        <mat-form-field>
           <input matInput aria-label="link" placeholder="link" type="text" formControlName = "link"/>
           <mat-error
           *ngIf="addedPart.get('link')['errors'] && 

@@ -12,6 +12,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatChipsModule} from '@angular/material/chips';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 const modules: Array<any>  = [
   CommonModule,
@@ -26,7 +28,10 @@ const modules: Array<any>  = [
   MatInputModule,
   MatButtonModule,
   MatSnackBarModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatChipsModule,
+  MatToolbarModule,
+    
   ];
 
 @NgModule({

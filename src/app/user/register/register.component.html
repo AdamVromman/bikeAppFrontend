@@ -1,0 +1,23 @@
+<form [formGroup]= "registerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput aria-label="email" placeholder="email" type="text" formControlName="email"/>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput aria-label="voornaam" placeholder="voornaam" type="text" formControlName="voornaam"/>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput aria-label="achternaam" placeholder="achternaam" type="text" formControlName="achternaam"/>
+    </mat-form-field>
+    <span formGroupName="passwordGroup">
+    <mat-form-field>
+        <input matInput aria-label="password" placeholder="password" type="password" formControlName="password"/>
+    </mat-form-field>
+    
+    <mat-form-field>
+        <input matInput aria-label="passwordConfirm" placeholder="passwordConfirm" type="password" formControlName="passwordConfirm"/>
+    </mat-form-field>
+</span>
+    <button color="accent" mat-raised-button type="submit">
+        register
+      </button>
+</form>

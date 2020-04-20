@@ -6,6 +6,7 @@ import { Part } from '../part/part.model';
 import { AddAddedPartService } from './add-added-part.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LoginService } from '../User/login/login.service';
 
 @Component({
   selector: 'app-add-added-part',
@@ -21,7 +22,8 @@ export class AddAddedPartComponent implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _addAddedPartService: AddAddedPartService,
-    private _snackbar: MatSnackBar
+    private _snackbar: MatSnackBar,
+    private _loginService: LoginService
   ) { }
 
   get parts(): Part[]
@@ -35,7 +37,6 @@ export class AddAddedPartComponent implements OnInit {
       brand:['onbekend'],
       price:['', Validators.required],
       link:['', Validators.required],
-      email:['', [Validators.required, Validators.email]],
       part:['', Validators.required]
     });
   
@@ -59,21 +60,24 @@ export class AddAddedPartComponent implements OnInit {
   onSubmit()
   {
     
-    console.log("test1");
+    console.log(this._loginService.user$.value);
     this._addAddedPartService.addAddedPart(new AddedPart
       (
         this.addedPart.value.name, 
         this.addedPart.value.brand, 
         this.addedPart.value.price, 
         this.addedPart.value.part, 
-        this.addedPart.value.email, 
+        this._loginService.user$.value, 
         this.addedPart.value.link
-      )).subscribe(d => console.log(d.getName));
-      if (this.addedPart.valid)
-      {
-        this._snackbar.open(`${this.addedPart.value.name} werd toegevoegd`, "oké", {duration: 2000});
-        this.addedPart.reset();
-      }
+      )).subscribe(l => 
+        {
+          if (this.addedPart.valid)
+            {
+            this._snackbar.open(`${l} werd toegevoegd`, "oké", {duration: 2000});
+            this.addedPart.reset();
+            }
+        });
+      
       
       
       

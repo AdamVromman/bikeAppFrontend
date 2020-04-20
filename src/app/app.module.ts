@@ -10,19 +10,20 @@ import { BikeListComponent } from './bike-list/bike-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatButtonModule } from '@angular/material/button';
-import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule } from '@angular/material/icon';
-import { MatListModule } from '@angular/material/list';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './User/login/login.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { httpInterceptorProviders } from './User/http-interceptor';
+import { AuthGuard } from './User/auth.guard';
+import { UserModule } from './User/user.module';
+import { RegisterComponent } from './User/register/register.component';
 
 
 
 const appRoutes: Routes = [
   {path: 'bikeApp/login', component: LoginComponent},
+  {path:'bikeApp/register', component: RegisterComponent},
   {path:'bikeApp/all', component: BikeListComponent},
-  {path: 'bikeApp/add', component: AddAddedPartComponent },
+  {path: 'bikeApp/add',canActivate: [ AuthGuard ], component: AddAddedPartComponent },
   {path: '', redirectTo: 'bikeApp/all', pathMatch: 'full'},
   { path: '**', component: PageNotFoundComponent}
 ]
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     PageNotFoundComponent,
     MainNavComponent
     
+    
   ],
   imports: [
     BrowserModule,
@@ -42,14 +44,12 @@ const appRoutes: Routes = [
     BikeModule,
     RouterModule.forRoot(appRoutes),
     LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule
+    ReactiveFormsModule,
+    FormsModule,
+    UserModule
    
   ],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Bike } from './bike.model';
 import { Part } from '../part/part.model';
 import { PartDataService } from '../part/part-data.service';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { PartImageComponent } from '../part-image/part-image.component';
 
 
 
@@ -15,10 +16,10 @@ import { catchError } from 'rxjs/operators';
 export class BikeComponent implements OnInit {
   
   private _fetchParts$: Observable<Part[]>
-  
   @Input() public _bike : Bike;
   private _selectedPart: Part = new Part(null, new Array<number>(), "", "", null, "", new Array<string>(),new Array<string>());
   public imgSrc: String = "";
+  @ViewChild('part') partImage: PartImageComponent;
 
   constructor(
     private _partsDataService: PartDataService
@@ -41,6 +42,7 @@ export class BikeComponent implements OnInit {
   selectPart(part: Part)
   {
     this._selectedPart = part;
+    this.partImage.select;
    
   }
 

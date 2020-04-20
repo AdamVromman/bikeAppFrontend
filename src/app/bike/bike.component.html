@@ -1,14 +1,11 @@
 <div>
-        
-        <p>{{_bike.name}}</p>
-        <p>{{_bike.type}}</p>
     <div fxLayout="row wrap"
     fxLayout.xs="column"
     fxLayoutGap="0.5%"
     fxLayoutAlign="start" >
-      <span *ngFor="let localpart of _bike.parts" (mouseenter)="selectPart(localpart)" >{{localpart.name}}</span>
+      <mat-chip *ngFor="let localpart of _bike.parts" (mouseenter)="selectPart(localpart)">{{localpart.name}}</mat-chip>
     <div id="omkadering">
-      <app-part-image (selectedPart)=selectPart($event) *ngFor="let localpart of _bike.parts" [part]=localpart></app-part-image>
+      <app-part-image #part (selectedPart)=selectPart($event) *ngFor="let localpart of _bike.parts" [part]=localpart></app-part-image>
     </div>
       <div *ngIf="selectedPart">
      <app-part [_part]="selectedPart"></app-part>
