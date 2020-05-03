@@ -5,8 +5,13 @@
       <a mat-list-item [routerLink]="['bikeApp/all']">Bikes</a>
     </mat-nav-list>
     <span class="filler"></span>
-    <a href="bikeApp/register" mat-raised-button color="accent">Register</a>
-    <a href="bikeApp/login" mat-raised-button color="accent">login</a>
-    <p *ngIf="Gebruiker != null">{{Gebruiker.Voornaam}}</p>
+    <div *ngIf="userName == null">
+      <a href="bikeApp/register" mat-raised-button color="accent">Register</a>
+      <a href="bikeApp/login" mat-raised-button color="accent">login</a>
+    </div>
+    <div *ngIf="userName != null">
+    <button mat-raised-button (click)="logout()">logout</button>
+  </div>
+    <p>{{userName}}</p>
     </mat-toolbar>
     <ng-content></ng-content>

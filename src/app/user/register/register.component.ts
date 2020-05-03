@@ -48,14 +48,17 @@ export class RegisterComponent implements OnInit {
               if (this._loginService.redirectUrl) {
                 this.router.navigateByUrl(this._loginService.redirectUrl);
                 this._loginService.redirectUrl = undefined;
+                window.location.reload();
               } else {
-                this.router.navigate(['/recipe/list']);
+                this.router.navigate(['/bikeApp/all']);
+                window.location.reload();
               }
             } else {
               console.log("foutje");
             }
           }
         });
+        
   }
 
 }

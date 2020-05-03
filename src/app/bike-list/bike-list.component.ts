@@ -13,9 +13,12 @@ export class BikeListComponent implements OnInit {
 
   private _fetchBikes$: Observable<Bike[]>;
   private _errorMessage: string;
+  public selectedBike: Bike = null;
 
   constructor(private _bikeDataService: BikeDataService)
-   { }
+   {
+     
+    }
 
    get bikes$(): Observable<Bike[]>
    {
@@ -39,6 +42,22 @@ export class BikeListComponent implements OnInit {
     );
 
 
+  }
+
+  public kiesFiets(): string
+  {
+    if(this.selectedBike == null)
+    {
+      return "kies een fiets";
+    }
+    else{
+      return this.selectedBike.name;
+    }
+  }
+
+  public selectBike(bike: Bike)
+  {
+    this.selectedBike = bike;
   }
 
 }

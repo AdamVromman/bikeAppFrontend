@@ -4,6 +4,7 @@ import { Login, Gebruiker } from './gebruiker.model';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 
 function parseJwt(token) {
@@ -25,7 +26,7 @@ export class LoginService {
   private _user$: BehaviorSubject<string>;
   public redirectUrl: string = null;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     let parsedToken = parseJwt(localStorage.getItem(this._tokenKey));
     if (parsedToken) {
       const expires = new Date(parseInt(parsedToken.exp, 10) * 1000) < new Date();
@@ -47,8 +48,7 @@ export class LoginService {
   }
   
   login(email: string, password: string): Observable<boolean> {
-    return this.http
-      .post(
+    return this.http.post(
         `${environment.apiUrl}/account`,
         { email, password },
         { responseType: 'text' }
@@ -72,8 +72,7 @@ export class LoginService {
     lastname: string,
     password: string
   ): Observable<boolean> {
-    return this.http
-      .post(
+    return this.http.post(
         `${environment.apiUrl}/account/register`,
         {
           firstname,
@@ -95,6 +94,7 @@ export class LoginService {
           }
         })
       );
+      
   }
 
   logout() {
@@ -102,6 +102,7 @@ export class LoginService {
       localStorage.removeItem('currentUser');
       this._user$.next(null);
     }
+    
   }
 
   checkUserNameAvailability = (email: string): Observable<boolean> => {

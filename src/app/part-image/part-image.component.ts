@@ -29,4 +29,9 @@ export class PartImageComponent implements OnInit {
     this.selected = "";
   }
 
+  public test()
+  {
+    console.log('test');
+  }
+
 }

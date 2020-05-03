@@ -3,9 +3,11 @@
     fxLayout.xs="column"
     fxLayoutGap="0.5%"
     fxLayoutAlign="start" >
-      <mat-chip *ngFor="let localpart of _bike.parts" (mouseenter)="selectPart(localpart)">{{localpart.name}}</mat-chip>
+    <mat-chip-list>
+      <mat-chip color="accent" selected *ngFor="let localpart of _bike.parts" (mouseout)="deselectPart(localpart)"(mouseenter)="selectPart(localpart)">{{localpart.name}}</mat-chip>
+    </mat-chip-list>
     <div id="omkadering">
-      <app-part-image #part (selectedPart)=selectPart($event) *ngFor="let localpart of _bike.parts" [part]=localpart></app-part-image>
+      <app-part-image (selectedPart)=selectPart($event) *ngFor="let localpart of _bike.parts" [part]=localpart></app-part-image>
     </div>
       <div *ngIf="selectedPart">
      <app-part [_part]="selectedPart"></app-part>

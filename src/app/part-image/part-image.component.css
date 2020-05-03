@@ -61,6 +61,48 @@ img
     z-index: 0;
 }
 
+.Buitenband2
+{
+    left: 407px;
+    top:201px;
+    z-index: 0;
+}
+
+.Binnenband
+{
+    left: 17px;
+    top:201px;
+    z-index: 0;
+}
+
+.Binnenband2
+{
+    left: 407px;
+    top:201px;
+    z-index: 0;
+}
+
+.Bel
+{
+    left: 487px;
+    top: 90.5px;
+    z-index:0;
+}
+
+.Pedalen
+{
+    left: 348px;
+    top: 405.12px;
+    z-index:5;
+}
+
+.Pedalen2
+{
+    left: 247.99px;
+    top: 289.12px;
+    z-index:0;
+}
+
 .Crankset
 {
     left:263.32px;
@@ -86,4 +128,11 @@ img
 {
     left:141.19px;
     top:321.84px;
+}
+
+.Bottombracket
+{
+    left:314.90px;
+    top:346.07px;
+    z-index: 0;
 }

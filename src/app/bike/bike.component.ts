@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { Bike } from './bike.model';
 import { Part } from '../part/part.model';
 import { PartDataService } from '../part/part-data.service';
@@ -18,8 +18,8 @@ export class BikeComponent implements OnInit {
   private _fetchParts$: Observable<Part[]>
   @Input() public _bike : Bike;
   private _selectedPart: Part = new Part(null, new Array<number>(), "", "", null, "", new Array<string>(),new Array<string>());
-  public imgSrc: String = "";
-  @ViewChild('part') partImage: PartImageComponent;
+  public imgSrc: String = "Stuur";
+  @ViewChildren(PartImageComponent) partImages: QueryList<PartImageComponent>;
 
   constructor(
     private _partsDataService: PartDataService
@@ -34,7 +34,6 @@ export class BikeComponent implements OnInit {
 
     this._fetchParts$ = this._partsDataService.parts$.pipe
     (
-      
     );
 
   }
@@ -42,18 +41,14 @@ export class BikeComponent implements OnInit {
   selectPart(part: Part)
   {
     this._selectedPart = part;
-    this.partImage.select;
+    this.partImages.find(p => p.part.name === part.name).selected = "Selected";
    
   }
 
-  bold()
-  {
-    this.imgSrc = "Selected";
-  }
 
-  deselectPart()
+  deselectPart(part: Part)
   {
-    this.imgSrc = "";
+    this.partImages.find(p => p.part.name === part.name).selected = "";
   }
 
   get selectedPart(): Part

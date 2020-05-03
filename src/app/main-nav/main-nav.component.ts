@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Gebruiker } from '../User/login/gebruiker.model';
+import { LoginService } from '../User/login/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-nav',
@@ -11,7 +13,8 @@ import { Gebruiker } from '../User/login/gebruiker.model';
 })
 export class MainNavComponent {
 
-  private gebruiker: Gebruiker
+ 
+  public userName: string;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
@@ -20,17 +23,22 @@ export class MainNavComponent {
     );
 
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver,
+    private _loginService: LoginService,
+    private _router: Router) {
+      this.userName = _loginService.user$.value;
+    }
 
 
-  public setToken(gebruiker: Gebruiker)
+  
+
+  
+  public logout()
   {
-    this.gebruiker = gebruiker;
-  }
-
-  get Gebruiker(): Gebruiker
-  {
-    return this.gebruiker;
+    this._loginService.logout();
+    window.location.reload();
+    this._router.navigateByUrl('bikeApp/all');
+    
   }
 
 }
