@@ -1,10 +1,6 @@
 
-<mat-card>
-    <mat-card-title>{{_addedPart.getName}}</mat-card-title>
-    <mat-list>
-        <mat-list-item>{{_addedPart.getBrand}}</mat-list-item>
-        <mat-list-item>{{_addedPart.getPrice}}</mat-list-item>
-    </mat-list>
-    
+<mat-card class="card">
+  <mat-card-title>{{_addedPart.getName}}</mat-card-title>
+  <img mat-card-image [src]="image">
 </mat-card>
 

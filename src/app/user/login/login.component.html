@@ -1,13 +1,14 @@
-
+<div>
         <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
-            <mat-form-field>
+            <mat-form-field appearance="fill">
                 <input matInput aria-label="email" placeholder="email" type="text" formControlName = "email"/>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field appearance="fill">
                 <input matInput aria-label="password" placeholder="password" type="password" formControlName = "password"/>
             </mat-form-field>
             <button color="accent" mat-raised-button type="submit">
                 Log in
               </button>
         </form>
+    </div>
 

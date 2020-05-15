@@ -5,5 +5,8 @@
     width: 700px;
     border: 1px black solid;
     position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
     
 }

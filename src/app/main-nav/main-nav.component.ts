@@ -26,7 +26,7 @@ export class MainNavComponent {
   constructor(private breakpointObserver: BreakpointObserver,
     private _loginService: LoginService,
     private _router: Router) {
-      this.userName = _loginService.user$.value;
+    _loginService.user$.subscribe(l => this.userName = l);
     }
 
 
@@ -36,7 +36,6 @@ export class MainNavComponent {
   public logout()
   {
     this._loginService.logout();
-    window.location.reload();
     this._router.navigateByUrl('bikeApp/all');
     
   }

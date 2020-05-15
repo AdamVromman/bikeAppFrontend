@@ -1,18 +1,22 @@
 import { Part } from "../part/part.model";
+import { Image } from './image.model';
 
 interface AddedPartJson
 {
+    id: number;
     name: string;
     brand: string;
     price: number;
     partId: number;
     email: string;
     link: string;
+
 }
 
 export class AddedPart
 {
     constructor(
+        private id: number,
         private name: string,
         private brand: string,
         private price: number,
@@ -24,11 +28,14 @@ export class AddedPart
 
     static fromJson(json: AddedPartJson): AddedPart
     {
-        let part = new AddedPart(json.name, json.brand, json.price, json.partId, json.email, json.link);
+        let part = new AddedPart(json.id, json.name, json.brand, json.price, json.partId, json.email, json.link);
         return part;
     }
 
-   
+   get Id(): number
+   {
+       return this.id;
+   }
 
     get getPartId(): number
     {

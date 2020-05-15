@@ -1,5 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { AddedPart } from './addedPart.model';
+import { Observable } from 'rxjs';
+import { AddedPartDataService } from './added-part-data.service';
+import { map } from 'rxjs/operators';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-added-part',
@@ -9,10 +13,29 @@ import { AddedPart } from './addedPart.model';
 export class AddedPartComponent implements OnInit {
 
   @Input() public _addedPart: AddedPart;
+  public _fetchImages$: Observable<any[]>;
+  public image: any;
 
-  constructor() { }
+  constructor(
+    private _addedPartData: AddedPartDataService,
+    private _sanitizer: DomSanitizer
+  ) {
+    
+   }
 
   ngOnInit(): void {
+
+    console.log(this._addedPart);
+
+      this._addedPartData.getImage(this._addedPart.Id).subscribe(data =>
+        {
+          let objectURL = 'data:image/png;base64,' + data;
+          console.log(objectURL);
+          this.image = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+        });
+
+    
+
   }
 
 }

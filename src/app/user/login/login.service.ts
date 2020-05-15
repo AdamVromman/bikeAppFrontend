@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Login, Gebruiker } from './gebruiker.model';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 
@@ -25,6 +25,7 @@ export class LoginService {
   private readonly _tokenKey = 'currentUser';
   private _user$: BehaviorSubject<string>;
   public redirectUrl: string = null;
+  public errorString: string;
 
   constructor(private http: HttpClient, private router: Router) {
     let parsedToken = parseJwt(localStorage.getItem(this._tokenKey));
@@ -54,12 +55,16 @@ export class LoginService {
         { responseType: 'text' }
       )
       .pipe(
+        catchError(this.handleError),
         map((token: any) => {
+          console.log(this.errorString);
           if (token) {
             localStorage.setItem(this._tokenKey, token);
             this._user$.next(email);
+            console.log(this.errorString);
             return true;
           } else {
+            console.log(this.errorString);
             return false;
           }
         })
@@ -90,6 +95,7 @@ export class LoginService {
             this._user$.next(email);
             return true;
           } else {
+            
             return false;
           }
         })
@@ -113,4 +119,14 @@ export class LoginService {
       }
     );
   };
+
+  private handleError(error: any): Observable<never>
+  {
+    if (error instanceof HttpErrorResponse)
+    {
+      console.log(error.statusText);
+      this.errorString = error.message;
+    }
+    return throwError(error.status);
+  }
 }

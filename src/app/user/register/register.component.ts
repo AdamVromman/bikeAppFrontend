@@ -1,10 +1,32 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 import { LoginService } from '../login/login.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
+import { map } from 'rxjs/operators';
 
 function comparePassword(control: AbstractControl): { [key: string]: any } {
   return control.get("password").value === control.get("passwordConfirm").value? null: {'passwordMismatch': 'Passwords dont match'}
+
+}
+
+function serverSideValidateUsername(checkAvailability: (username: string) => Observable<boolean>): ValidatorFn
+{
+  return (control: AbstractControl): Observable<ValidationErrors> =>
+  {
+    return checkAvailability(control.value).pipe
+    (
+      map(available =>
+        {
+          if(available)
+          {
+            return null;
+          }
+          return {userAlreadyExists: true}
+        })
+    )
+  }
 }
 
 @Component({
@@ -25,17 +47,19 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this._formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email], serverSideValidateUsername(this._loginService.checkUserNameAvailability)],
       voornaam:['', Validators.required],
       achternaam:['', Validators.required],
       passwordGroup: this._formBuilder.group({password: ['', Validators.required],
       passwordConfirm:['', Validators.required]}, {comparePassword})
      
     })
+    
   }
 
   public onSubmit()
   {
+  
     this._loginService.register(
       this.registerForm.value.email,
       this.registerForm.value.voornaam,
@@ -61,4 +85,24 @@ export class RegisterComponent implements OnInit {
         
   }
 
+  getErrorMessage(errors: any):string
+  {
+    if (errors.required)
+    {
+      return "is required";
+    }
+    else if (errors.email)
+    {
+      return "needs to be a valid emailaddress";
+    }
+    else if (errors.userAlreadyExists)
+    {
+      return "email address already taken";
+    }
+    else if (errors.passwordMismatch)
+    {
+      return "the passwords do not match";
+    }
+
+  }
 }

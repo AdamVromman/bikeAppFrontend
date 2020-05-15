@@ -10,6 +10,8 @@ import { Part } from '../part/part.model';
 export class PartImageComponent implements OnInit {
 
   @Output() public selectedPart = new EventEmitter<Part>();
+  @Output() public deselectedPart = new EventEmitter<Part>();
+  @Output() public selectedClickPart = new EventEmitter<Part>();
   @Input() public part: Part;
   public selected: String = "";
 
@@ -20,18 +22,18 @@ export class PartImageComponent implements OnInit {
 
   public select()
   {
-    this.selected = "Selected";
     this.selectedPart.emit(this.part);
   }
 
   public deselect()
   {
-    this.selected = "";
+    
+    this.deselectedPart.emit(this.part);
   }
 
-  public test()
+  public selectClick()
   {
-    console.log('test');
+    this.selectedClickPart.emit(this.part);
   }
 
 }

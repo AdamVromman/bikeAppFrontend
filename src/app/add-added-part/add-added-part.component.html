@@ -48,9 +48,12 @@
           {{ getErrorMessage(addedPart.get('part')['errors']) }}
         </mat-error>
         </mat-form-field>
-        <button mat-raised-button type="submit">
+        
+        <button [disabled]="disabled" mat-raised-button type="submit" >
           add part
         </button>
       </form>
+      <input mat-input aria-label="file" type="file" accept="image/*" (change)="selectFile($event.target.files)"> 
+
     </mat-card-content>
   </mat-card>

@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
 
   public logInForm: FormGroup;
   @Output() token = new EventEmitter<Gebruiker>();
+  public errorString: string;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -34,26 +35,23 @@ export class LoginComponent implements OnInit {
     this._loginService.login(
       this.logInForm.value.email,
       this.logInForm.value.password
-      ).subscribe(l =>
+      ).subscribe(val =>
         {
-          (val) => {
+          
             if (val) {
               if (this._loginService.redirectUrl) {
                 this.router.navigateByUrl(this._loginService.redirectUrl);
                 this._loginService.redirectUrl = undefined;
-                
-                window.location.reload();
               } else {
-                this.router.navigate(['/bikeApp/all']);
-                window.location.reload();
-                
-      
+                this.router.navigateByUrl('/bikeApp/all');
               }
             } else {
-              
+              console.log("fout password");
             }
-          }
+        this.errorString = this._loginService.errorString;
         });
+
+       
         
   }
 

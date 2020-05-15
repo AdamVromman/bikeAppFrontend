@@ -10,28 +10,28 @@
        <mat-list-item><strong>optioneel: </strong>{{_part.isOptional}}</mat-list-item>
        <mat-list-item>
          <p><strong>Afhankelijke onderdelen</strong></p>
-         <div *ngFor="let part of _part.dependantParts">
-          <div matLine>{{part}}</div>
-         </div>
+         <mat-chip-list> 
+          <mat-chip *ngFor="let part of _part.dependantParts">{{part}}</mat-chip>
+        </mat-chip-list>
        </mat-list-item>
        
        <mat-list-item>
         <p><strong>Dominante onderdelen</strong></p>
-        <mat-list>
-          <mat-list-item *ngFor="let part of _part.dominantParts">
-          {{part}}
-         </mat-list-item>
-        </mat-list>
-        
-      </mat-list-item>
-      <mat-list-item>
-        <mat-list>
-          <mat-list-item  *ngFor="let addedPart of ( addedParts$ | async | addedpartsFilter: _part.id)">
-            <app-added-part [_addedPart]="addedPart"></app-added-part>
-          </mat-list-item>
-        </mat-list>
-      </mat-list-item>
+        <mat-chip-list> 
+          <mat-chip *ngFor="let part of _part.dominantParts">{{part}}</mat-chip>
+        </mat-chip-list>
+       </mat-list-item>
      </mat-list>
     </mat-card-content>
   </mat-card> 
+
+
+ 
+
+<mat-accordion>
+  
+    <app-added-part *ngFor="let addedPart of ( addedParts$ | async | addedpartsFilter: _part.id)" [_addedPart]="addedPart"></app-added-part>
+  
+</mat-accordion>
+
   

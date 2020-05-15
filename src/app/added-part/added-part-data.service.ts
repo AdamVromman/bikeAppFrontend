@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { AddedPart } from './addedPart.model';
 import { Observable, throwError } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
+import { Image } from './image.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,31 @@ export class AddedPartDataService {
     }
     console.error(err);
     return throwError(errorMessage);
+  }
+
+  public get images$(): Observable<Image[]>
+  {
+    
+    let headers = new HttpHeaders().set('content-type', 'application/json');  
+    return this.http.get(`${environment.apiUrl}/addedparts/images`, {headers}).pipe
+    (
+      catchError(this.handleError),
+      map((list: any[]):Image[] => 
+      {
+        return list.map(Image.fromJSON);
+      })
+    );
+  }
+
+  public getImage(id: number): Observable<any[]>
+  {
+    return this.http.get(`${environment.apiUrl}/AddedParts/test/${id}`).pipe(
+      map((image: any): any[] => 
+      {
+        console.log(image);
+      return image.imageData
+      })
+    )
   }
 
 }

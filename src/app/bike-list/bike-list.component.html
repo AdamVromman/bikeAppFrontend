@@ -1,8 +1,8 @@
 
 <div *ngIf="(bikes$ | async) as bikes; else loadingOrError">
-<button mat-raised-button color="accent"  [matMenuTriggerFor]="menu">{{kiesFiets()}}</button>
+<button style="margin: 5px;" mat-raised-button color="accent"  [matMenuTriggerFor]="menu">{{kiesFiets()}}</button>
   <mat-menu #menu="matMenu">
-  <button (click)="selectBike(bike)" mat-menu-item *ngFor="let bike of (bikes)">{{bike.name}}</button>
+  <button  (click)="selectBike(bike)" mat-menu-item *ngFor="let bike of (bikes)">{{bike.name}}</button>
   </mat-menu>
   <app-bike *ngIf="selectedBike != null" [_bike]="selectedBike"></app-bike>
 </div>
@@ -14,5 +14,7 @@
     </mat-card>
   </ng-template>
   <ng-template #loading>
-    <mat-spinner></mat-spinner>
+    <mat-spinner style="position: absolute;
+    left: 50%;
+    top: 50%;"></mat-spinner>
   </ng-template>

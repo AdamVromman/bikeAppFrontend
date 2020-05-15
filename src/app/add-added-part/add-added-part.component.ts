@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 import { AddedPart } from '../added-part/addedPart.model';
@@ -7,6 +7,7 @@ import { AddAddedPartService } from './add-added-part.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HttpErrorResponse } from '@angular/common/http';
 import { LoginService } from '../User/login/login.service';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-add-added-part',
@@ -19,7 +20,11 @@ export class AddAddedPartComponent implements OnInit {
   @Input() public _Parts: Part[];
   @Input() part: Part;
   public addedPart: FormGroup;
+  private fileToUpload: File = null;
+  public disabled: boolean;
+  public image: any;
   constructor(
+    private _sanitizer: DomSanitizer,
     private _formBuilder: FormBuilder,
     private _addAddedPartService: AddAddedPartService,
     private _snackbar: MatSnackBar,
@@ -37,8 +42,20 @@ export class AddAddedPartComponent implements OnInit {
       brand:['onbekend'],
       price:['', Validators.required],
       link:['', Validators.required],
-      part:['', Validators.required]
+      part:['', Validators.required],
+      file:[]
     });
+    this._loginService.user$.subscribe(v =>
+      {
+        if (v)
+        {
+          this.disabled = false;
+        }
+        else
+        {
+          this.disabled = true;
+        }
+      } )
   
   }
 
@@ -60,9 +77,9 @@ export class AddAddedPartComponent implements OnInit {
   onSubmit()
   {
     
-    console.log(this._loginService.user$.value);
     this._addAddedPartService.addAddedPart(new AddedPart
       (
+        -1,
         this.addedPart.value.name, 
         this.addedPart.value.brand, 
         this.addedPart.value.price, 
@@ -73,15 +90,23 @@ export class AddAddedPartComponent implements OnInit {
         {
           if (this.addedPart.valid)
             {
-            this._snackbar.open(`${l} werd toegevoegd`, "oké", {duration: 2000});
+              this.uploadFile(l.Id);
+            this._snackbar.open(`${l.getName} werd toegevoegd`, "oké", {duration: 2000});
             this.addedPart.reset();
             }
         });
-      
-      
-      
-      
-      
+    
+ 
+  }
+
+  public selectFile(files: FileList)
+  {
+    this.fileToUpload = files.item(0);
+  }
+
+  uploadFile(addedPartId: number)
+  {
+    this._addAddedPartService.addImage(this.fileToUpload,addedPartId).subscribe();
   }
 
 }

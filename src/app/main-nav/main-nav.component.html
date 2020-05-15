@@ -1,17 +1,16 @@
 
     <mat-toolbar color="primary">
-      <span>BikeApp</span>
-       <mat-nav-list>
-      <a mat-list-item [routerLink]="['bikeApp/all']">Bikes</a>
-    </mat-nav-list>
+      <span id="logo" [routerLink]="['bikeApp/all']" mat-list-item >BikeApp</span>
     <span class="filler"></span>
     <div *ngIf="userName == null">
-      <a href="bikeApp/register" mat-raised-button color="accent">Register</a>
-      <a href="bikeApp/login" mat-raised-button color="accent">login</a>
+      <a style="margin: 5px;" href="bikeApp/register" mat-raised-button color="accent">Register</a>
+      <a style="margin: 5px;" href="bikeApp/login" mat-raised-button color="accent">login</a>
     </div>
-    <div *ngIf="userName != null">
-    <button mat-raised-button (click)="logout()">logout</button>
-  </div>
     <p>{{userName}}</p>
+    <div *ngIf="userName != null">
+      
+    <button style="margin: 5px;" mat-raised-button (click)="logout()">logout</button>
+  </div>
+    
     </mat-toolbar>
     <ng-content></ng-content>

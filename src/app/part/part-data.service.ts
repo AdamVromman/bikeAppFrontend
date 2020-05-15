@@ -22,7 +22,6 @@ export class PartDataService {
     return this.http.get(`${environment.apiUrl}/parts/`).pipe
     (
       catchError(this.handleError),
-      tap(console.log),
       map((list: any[]): Part[] => list.map(Part.fromJSON) )
     );
   }

@@ -33,7 +33,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     PageNotFoundComponent,
-    MainNavComponent
+    MainNavComponent,
+    LoginComponent
     
     
   ],

@@ -17,6 +17,6 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule
     
   ],
-  declarations: [LoginComponent, RegisterComponent]
+  declarations: [RegisterComponent]
 })
 export class UserModule { }

@@ -13,8 +13,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatChipsModule} from '@angular/material/chips';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatMenuModule} from '@angular/material/menu';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const modules: Array<any>  = [
   CommonModule,
@@ -32,7 +33,9 @@ const modules: Array<any>  = [
   MatToolbarModule,
   MatChipsModule,
   MatToolbarModule,
-  MatMenuModule
+  MatMenuModule,
+  MatExpansionModule,
+  MatTooltipModule
   ];
 
 @NgModule({

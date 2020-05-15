@@ -20,6 +20,8 @@ export class BikeComponent implements OnInit {
   private _selectedPart: Part = new Part(null, new Array<number>(), "", "", null, "", new Array<string>(),new Array<string>());
   public imgSrc: String = "Stuur";
   @ViewChildren(PartImageComponent) partImages: QueryList<PartImageComponent>;
+  public locked: boolean = false;
+  public icon: string = 'lock_open';
 
   constructor(
     private _partsDataService: PartDataService
@@ -38,17 +40,45 @@ export class BikeComponent implements OnInit {
 
   }
 
-  selectPart(part: Part)
+  selectPartHover(part: Part)
+  {
+    if(this.icon === 'lock_open')
+    {
+      this._selectedPart = part;
+      this.partImages.find(p => p.part.name === part.name).selected = "Selected";
+    }
+   
+   
+  }
+
+  selectPartClick(part: Part)
   {
     this._selectedPart = part;
+    this.partImages.forEach(p => p.selected = "");
     this.partImages.find(p => p.part.name === part.name).selected = "Selected";
-   
+    this.icon = 'lock';
+  }
+
+  selectLock()
+  {
+    if (this.icon === 'lock')
+    {
+      this.icon = 'lock_open';
+      this.partImages.forEach(p => p.selected = "");
+    }
+    else{
+      this.icon = 'lock';
+    }
   }
 
 
   deselectPart(part: Part)
   {
-    this.partImages.find(p => p.part.name === part.name).selected = "";
+    
+    if(this.icon === 'lock_open')
+    {    
+      this.partImages.find(p => p.part.name === part.name).selected = "";
+    }
   }
 
   get selectedPart(): Part

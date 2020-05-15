@@ -3,7 +3,7 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Bike } from './bike.model';
 import { environment } from 'src/environments/environment';
-import { tap, map, catchError, delay } from 'rxjs/operators';
+import { tap, map, catchError, delay, debounce, debounceTime } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,6 @@ export class BikeDataService {
   {
     return this.http.get(`${environment.apiUrl}/bikes/`).pipe(
       catchError(this.handleError),
-      tap(console.log),
       map((list: any[]): Bike[] => list.map(Bike.fromJSON) )
     );
   }

@@ -1,2 +1,2 @@
-<img  class="{{part.name}}" (mouseenter)="select()" (mouseleave)="deselect()" src="assets/images/{{part.name}}{{selected}}.png">
-<img *ngIf="part.name === 'Buitenband' || part.name === 'Binnenband' || part.name === 'Pedalen'" class="{{part.name}}2"(mouseenter)="select()" (mouseleave)="deselect()" src="assets/images/{{part.name}}{{selected}}.png">
+<img  class="{{part.name}}" (click)="selectClick()"(mouseenter)="select()" (mouseout)="deselect()" src="assets/images/{{part.name}}{{selected}}.png">
+<img *ngIf="part.name === 'Buitenband' || part.name === 'Binnenband' || part.name === 'Pedalen'" class="{{part.name}}2"(mouseenter)="select()" (mouseout)="deselect()" src="assets/images/{{part.name}}{{selected}}.png">
