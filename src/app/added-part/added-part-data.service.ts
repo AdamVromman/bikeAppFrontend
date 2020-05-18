@@ -10,7 +10,6 @@ import { Image } from './image.model';
   providedIn: 'root'
 })
 export class AddedPartDataService {
-  private _addedParts$: Observable<AddedPart[]>
   
 
   constructor(

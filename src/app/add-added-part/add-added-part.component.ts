@@ -93,6 +93,7 @@ export class AddAddedPartComponent implements OnInit {
               this.uploadFile(l.Id);
             this._snackbar.open(`${l.getName} werd toegevoegd`, "oké", {duration: 2000});
             this.addedPart.reset();
+            this.addedPart.markAsUntouched(); 
             }
         });
     

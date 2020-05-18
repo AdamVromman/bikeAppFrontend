@@ -5,33 +5,26 @@
     </mat-card-header>
     <mat-card-content>
      
-     <mat-list>
-       <mat-list-item><strong>functionaliteit: </strong>{{_part.functionality}}</mat-list-item>
-       <mat-list-item><strong>optioneel: </strong>{{_part.isOptional}}</mat-list-item>
-       <mat-list-item>
+     
+       <strong>functionaliteit: </strong>{{_part.functionality}}
+       <strong>optioneel: </strong>{{_part.isOptional}}
+       
          <p><strong>Afhankelijke onderdelen</strong></p>
          <mat-chip-list> 
           <mat-chip *ngFor="let part of _part.dependantParts">{{part}}</mat-chip>
         </mat-chip-list>
-       </mat-list-item>
-       
-       <mat-list-item>
         <p><strong>Dominante onderdelen</strong></p>
         <mat-chip-list> 
           <mat-chip *ngFor="let part of _part.dominantParts">{{part}}</mat-chip>
         </mat-chip-list>
-       </mat-list-item>
-     </mat-list>
     </mat-card-content>
   </mat-card> 
 
 
  
 
-<mat-accordion>
-  
-    <app-added-part *ngFor="let addedPart of ( addedParts$ | async | addedpartsFilter: _part.id)" [_addedPart]="addedPart"></app-added-part>
-  
-</mat-accordion>
+<div class="scroll">
+    <app-added-part style="display: inline-block;" *ngFor="let addedPart of ( addedParts$ | async | addedpartsFilter: _part.id)" [_addedPart]="addedPart"></app-added-part>
+</div>
 
   

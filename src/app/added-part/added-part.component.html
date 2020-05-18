@@ -1,6 +1,17 @@
 
 <mat-card class="card">
-  <mat-card-title>{{_addedPart.getName}}</mat-card-title>
-  <img mat-card-image [src]="image">
+  <mat-card-header>
+    <span style="overflow: hidden;">{{_addedPart.getName}}</span>
+  </mat-card-header>
+  
+  <mat-card-content>
+    <div class="fotoKader">
+      <img mat-card-image [src]="image">
+    </div>
+    <p>{{_addedPart.getBrand}}</p>
+    <p>{{_addedPart.getPrice}}</p>
+    <p>{{_addedPart.getLink}}</p>
+  </mat-card-content>
+  
 </mat-card>
 

@@ -1,6 +1,15 @@
 mat-card
 {
-
     width: 730px;
+    height: 200px;
+}
 
+.scroll
+{
+    margin: 20px;
+    overflow: auto;
+    white-space: nowrap;
+    height: 350px;
+    width: 730px;
+    
 }
