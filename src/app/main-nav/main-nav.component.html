@@ -3,8 +3,8 @@
       <span id="logo" [routerLink]="['bikeApp/all']" mat-list-item >BikeApp</span>
     <span class="filler"></span>
     <div *ngIf="userName == null">
-      <a style="margin: 5px;" href="bikeApp/register" mat-raised-button color="accent">Register</a>
-      <a style="margin: 5px;" href="bikeApp/login" mat-raised-button color="accent">login</a>
+      <button style="margin: 5px;" (click)="register()" mat-raised-button color="accent">Register</button>
+      <button style="margin: 5px;" (click)="login()" mat-raised-button color="accent">login</button>
     </div>
     <p>{{userName}}</p>
     <div *ngIf="userName != null">

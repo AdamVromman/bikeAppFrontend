@@ -23,6 +23,13 @@ export class BikeDataService {
     );
   }
 
+  public getBike$(name: string): Observable<Bike>
+  {
+    return this.http.get(`${environment.apiUrl}/bikes/${name}`).pipe(
+      map((bike:any): Bike => Bike.fromJSON(bike))
+    );
+  }
+
   private handleError(err: any): Observable<never> {
     let errorMessage: string;
     if (err instanceof HttpErrorResponse) {

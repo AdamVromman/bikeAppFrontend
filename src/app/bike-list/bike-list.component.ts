@@ -3,6 +3,7 @@ import { Observable, EMPTY } from 'rxjs';
 import { Bike } from '../bike/bike.model';
 import { BikeDataService } from '../bike/bike-data.service';
 import { catchError } from 'rxjs/operators';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bike-list',
@@ -15,9 +16,20 @@ export class BikeListComponent implements OnInit {
   private _errorMessage: string;
   public selectedBike: Bike = null;
 
-  constructor(private _bikeDataService: BikeDataService)
-   {
-     
+  constructor(private _bikeDataService: BikeDataService, private _route: ActivatedRoute)
+   
+    {
+      this._route.params.subscribe(d => 
+      {
+        if (d['name'])
+        {
+        _bikeDataService.getBike$(d['name']).subscribe(b => 
+      {
+        this.selectedBike = b;
+        console.log(b);
+      }
+      )}
+    });
     }
 
    get bikes$(): Observable<Bike[]>

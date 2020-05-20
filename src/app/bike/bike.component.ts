@@ -5,6 +5,7 @@ import { PartDataService } from '../part/part-data.service';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { PartImageComponent } from '../part-image/part-image.component';
+import { Router, ActivatedRoute } from '@angular/router';
 
 
 
@@ -25,7 +26,10 @@ export class BikeComponent implements OnInit {
 
   constructor(
     private _partsDataService: PartDataService
-  ){}
+  )
+  {
+    
+  }
 
   get fetchParts$(): Observable<Part[]>
   {

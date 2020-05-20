@@ -3,7 +3,7 @@ import { AddedPart } from './addedPart.model';
 import { Observable, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpParams, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, tap } from 'rxjs/operators';
 import { Image } from './image.model';
 
 @Injectable({
@@ -52,11 +52,17 @@ export class AddedPartDataService {
 
   public getImage(id: number): Observable<any[]>
   {
-    return this.http.get(`${environment.apiUrl}/AddedParts/test/${id}`).pipe(
+    console.log("test2");
+    return this.http.get(`${environment.apiUrl}/AddedParts/getImage/${id}`).pipe(
+      catchError(this.handleError),
       map((image: any): any[] => 
       {
-        console.log(image);
-      return image.imageData
+          if (image)
+          {
+          return image.imageData;
+          }
+          return null;
+        
       })
     )
   }

@@ -18,17 +18,6 @@ import { UserModule } from './User/user.module';
 import { RegisterComponent } from './User/register/register.component';
 
 
-
-const appRoutes: Routes = [
-  {path: 'bikeApp/login', component: LoginComponent},
-  {path:'bikeApp/register', component: RegisterComponent},
-  {path:'bikeApp/all', component: BikeListComponent},
-  {path: 'bikeApp/add',canActivate: [ AuthGuard ], component: AddAddedPartComponent },
-  {path: '', redirectTo: 'bikeApp/all', pathMatch: 'full'},
-  { path: '**', component: PageNotFoundComponent}
-]
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +32,7 @@ const appRoutes: Routes = [
     AppRoutingModule,
     MaterialModule, 
     BikeModule,
-    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
     LayoutModule,
     ReactiveFormsModule,
     FormsModule,

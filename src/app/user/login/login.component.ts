@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Login, Gebruiker } from './gebruiker.model';
-import { Router } from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -15,13 +15,17 @@ export class LoginComponent implements OnInit {
   public logInForm: FormGroup;
   @Output() token = new EventEmitter<Gebruiker>();
   public errorString: string;
+  public vorigePagina: string;
 
   constructor(
     private _formBuilder: FormBuilder,
     private _loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
     
-  ) { }
+  ) {
+      
+   }
 
   ngOnInit(): void {
     this.logInForm = this._formBuilder.group({
@@ -43,7 +47,9 @@ export class LoginComponent implements OnInit {
                 this.router.navigateByUrl(this._loginService.redirectUrl);
                 this._loginService.redirectUrl = undefined;
               } else {
-                this.router.navigateByUrl('/bikeApp/all');
+      
+                  this.router.navigateByUrl('/bikeApp/all');
+                
               }
             } else {
               console.log("fout password");

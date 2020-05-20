@@ -24,18 +24,20 @@ export class AddedPartComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
-    console.log(this._addedPart);
-
+      
       this._addedPartData.getImage(this._addedPart.Id).subscribe(data =>
         {
+          if(data)
+          {
           let objectURL = 'data:image/png;base64,' + data;
-          console.log(objectURL);
           this.image = this._sanitizer.bypassSecurityTrustUrl(objectURL);
+          }
+          else
+          {
+            this.image = null;
+          }
+          
         });
-
-    
-
   }
 
 }
