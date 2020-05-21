@@ -1,10 +1,10 @@
 
 <div *ngIf="(bikes$ | async) as bikes; else loadingOrError">
-<button style="margin: 5px;" mat-raised-button color="accent"  [matMenuTriggerFor]="menu">{{kiesFiets()}}</button>
+<button   style="margin: 5px;" mat-raised-button color="accent"  [matMenuTriggerFor]="menu">{{kiesFiets()}}</button>
   <mat-menu #menu="matMenu">
-  <button  (click)="selectBike(bike)" mat-menu-item *ngFor="let bike of (bikes)">{{bike.name}}</button>
+  <button (click)="selectBike(bike)" mat-menu-item *ngFor="let bike of (bikes)">{{bike.name}}</button>
   </mat-menu>
-  <app-bike data-cy="bikeApp" *ngIf="selectedBike != null" [_bike]="selectedBike"></app-bike>
+  <app-bike *ngIf="selectedBike != null" [_bike]="selectedBike"></app-bike>
 </div>
 <ng-template #loadingOrError>
     <mat-card class="error" *ngIf="errorMessage; else loading">

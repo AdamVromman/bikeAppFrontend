@@ -6,3 +6,8 @@ div
     margin-top: 20px;
     padding: 50px;
 }
+
+.errorMessage
+{
+    color:red;
+}

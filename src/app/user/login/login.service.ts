@@ -124,9 +124,9 @@ export class LoginService {
   {
     if (error instanceof HttpErrorResponse)
     {
-      console.log(error.statusText);
+      
       this.errorString = error.message;
     }
-    return throwError(error.status);
+    return throwError(error.error);
   }
 }

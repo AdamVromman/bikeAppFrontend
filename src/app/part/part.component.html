@@ -1,30 +1,34 @@
 <mat-card>
     <mat-card-header>
-      <mat-card-title> <mat-icon (mouseover)="filterAddedParts$.next(_part.name)">directions_bike</mat-icon> {{ _part.name }} </mat-card-title>
+      <mat-card-title> <mat-icon (mouseover)="filterAddedParts$.next(_part.name)">directions_bike</mat-icon> <span data-cy="partName">{{ _part.name }}</span> </mat-card-title>
       <mat-card-subtitle><strong>beschrijving: </strong>{{_part.description}} </mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-     
-     
-       <strong>functionaliteit: </strong>{{_part.functionality}}
-       <strong>optioneel: </strong>{{_part.isOptional}}
-       
-         <p><strong>Afhankelijke onderdelen</strong></p>
+      <mat-list>
+        <mat-list-item>
+          <strong>functionaliteit: </strong>&nbsp;{{_part.functionality}}
+        </mat-list-item>
+        <mat-list-item>
+          <strong>optioneel: </strong>&nbsp;{{optioneel}}
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Afhankelijke onderdelen:</strong>
          <mat-chip-list> 
           <mat-chip *ngFor="let part of _part.dependantParts">{{part}}</mat-chip>
         </mat-chip-list>
-        <p><strong>Dominante onderdelen</strong></p>
-        <mat-chip-list> 
-          <mat-chip *ngFor="let part of _part.dominantParts">{{part}}</mat-chip>
-        </mat-chip-list>
+        </mat-list-item>
+        <mat-list-item>
+          <strong>Dominante onderdelen:</strong>
+          <mat-chip-list> 
+            <mat-chip *ngFor="let part of _part.dominantParts">{{part}}</mat-chip>
+          </mat-chip-list>
+        </mat-list-item>
+      </mat-list>
     </mat-card-content>
+    <div class="scroll">
+      <app-added-part style="display: inline-block;" *ngFor="let addedPart of ( addedParts$ | addedpartsFilter: _part.id)" [_addedPart]="addedPart"></app-added-part>
+  </div>
   </mat-card> 
 
-
- 
-
-<div class="scroll">
-    <app-added-part style="display: inline-block;" *ngFor="let addedPart of ( addedParts$ | async | addedpartsFilter: _part.id)" [_addedPart]="addedPart"></app-added-part>
-</div>
 
   

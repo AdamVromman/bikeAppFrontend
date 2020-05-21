@@ -43,7 +43,6 @@ export class MainNavComponent {
 
   public login()
   {
-    console.log(this._route.url);
     this._router.navigateByUrl('bikeApp/login',{ queryParams: { redirectTo: this._route.snapshot.url }});
   }
 

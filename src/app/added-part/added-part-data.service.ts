@@ -16,7 +16,7 @@ export class AddedPartDataService {
     private http: HttpClient
   ) { }
 
-  public get addedParts$(): Observable<AddedPart[]>
+  public get AddedParts$(): Observable<AddedPart[]>
   {
     return this.http.get(`${environment.apiUrl}/addedparts/`).pipe
     (
@@ -52,7 +52,6 @@ export class AddedPartDataService {
 
   public getImage(id: number): Observable<any[]>
   {
-    console.log("test2");
     return this.http.get(`${environment.apiUrl}/AddedParts/getImage/${id}`).pipe(
       catchError(this.handleError),
       map((image: any): any[] => 

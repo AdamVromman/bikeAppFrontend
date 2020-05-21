@@ -1,12 +1,21 @@
 <div>
+        <p class="errorMessage">{{errorMessage}}</p>
         <form [formGroup]="logInForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="fill">
                 <input matInput aria-label="email" placeholder="email" type="text" formControlName = "email"/>
+                <mat-error *ngIf="logInForm.get('email').errors && logInForm.get('email').touched">
+                    {{ getErrorMessage(logInForm.get('email').errors) }}
+              </mat-error>
             </mat-form-field>
+            
             <mat-form-field appearance="fill">
                 <input matInput aria-label="password" placeholder="password" type="password" formControlName = "password"/>
+                <mat-error *ngIf="logInForm.get('password').errors && logInForm.get('password').touched">
+                    {{ getErrorMessage(logInForm.get('password').errors) }}
+              </mat-error>
             </mat-form-field>
-            <button color="accent" mat-raised-button type="submit">
+            
+            <button [disabled]="!logInForm.valid" color="accent" mat-raised-button type="submit">
                 Log in
               </button>
         </form>

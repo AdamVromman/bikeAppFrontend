@@ -3,6 +3,8 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { LoginService } from './login.service';
 import { Login, Gebruiker } from './gebruiker.model';
 import { Router, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { EMPTY } from 'rxjs';
 
 
 @Component({
@@ -16,6 +18,7 @@ export class LoginComponent implements OnInit {
   @Output() token = new EventEmitter<Gebruiker>();
   public errorString: string;
   public vorigePagina: string;
+  public errorMessage: string;
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -39,6 +42,13 @@ export class LoginComponent implements OnInit {
     this._loginService.login(
       this.logInForm.value.email,
       this.logInForm.value.password
+      ).pipe(
+        catchError(err =>
+          {
+            
+            this.errorMessage = err; 
+            return EMPTY;
+          })
       ).subscribe(val =>
         {
           
@@ -59,6 +69,18 @@ export class LoginComponent implements OnInit {
 
        
         
+  }
+
+  getErrorMessage(errors: any):string
+  {
+    if (errors.required)
+    {
+      return "is required";
+    }
+    else if (errors.email)
+    {
+      return "needs to be a valid emailaddress";
+    }
   }
 
 }

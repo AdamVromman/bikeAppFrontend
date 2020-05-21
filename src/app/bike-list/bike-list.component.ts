@@ -17,20 +17,7 @@ export class BikeListComponent implements OnInit {
   public selectedBike: Bike = null;
 
   constructor(private _bikeDataService: BikeDataService, private _route: ActivatedRoute)
-   
-    {
-      this._route.params.subscribe(d => 
-      {
-        if (d['name'])
-        {
-        _bikeDataService.getBike$(d['name']).subscribe(b => 
-      {
-        this.selectedBike = b;
-        console.log(b);
-      }
-      )}
-    });
-    }
+   {}
 
    get bikes$(): Observable<Bike[]>
    {
@@ -43,15 +30,29 @@ export class BikeListComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
-    this._fetchBikes$ = this._bikeDataService.bikes$.pipe
-    (
-      catchError(err => 
+    this._route.params.subscribe(d => 
+      {
+        if (d['name'])
         {
-          this._errorMessage = err; 
-          return EMPTY;
-        })
-    );
+        this._bikeDataService.getBike$(d['name']).subscribe(b => 
+      {
+        this.selectedBike = b;
+        console.log(b);
+      }
+      )}
+    });
+    if(this.selectedBike == null)
+    {
+      this._fetchBikes$ = this._bikeDataService.bikes$.pipe
+      (
+        catchError(err => 
+          {
+            this._errorMessage = err; 
+            return EMPTY;
+          })
+      );
+    }
+    
 
 
   }

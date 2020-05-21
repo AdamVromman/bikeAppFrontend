@@ -18,3 +18,35 @@ import './commands'
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+beforeEach(() => {
+    cy.server();
+    cy.route({
+        method:'GET',
+        url: 'http://localhost:4200/api/bikes/fixie',
+        status: 200,
+        response:'fixture:fixie.json'
+    });
+    cy.route({
+        method:'GET',
+        url: 'http://localhost:4200/api/bikes/',
+        status: 200,
+        response:'fixture:bikes.json'
+    });
+    cy.route({
+        method:'GET',
+        url: 'http://localhost:4200/api/parts',
+        status: 200,
+        response:'fixture:parts.json'
+    })
+    cy.route(
+        {
+            method:'GET',
+        url: 'http://localhost:4200/api/addedparts',
+        status: 200,
+        response:'fixture:addedparts.json'
+        }
+    )
+    cy.log("set up server and routes");
+
+  })

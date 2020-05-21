@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "name": "700 kamikaze",
+    "brand": "Kamikaze",
+    "price": 19.95,
+    "partId": 16,
+    "email": "Eddie.Merckx@hogent.be",
+    "link": "https://www.santafixie.nl/700-kamikaze-rood-track-zwart.html"
+  },
+  {
+    "id": 2,
+    "name": "FUJI TRACK ELITE CARBON CITRUS FRAMESET",
+    "brand": "Fuji",
+    "price": 1899,
+    "partId": 11,
+    "email": "Eddie.Merckx@hogent.be",
+    "link": "https://www.santafixie.nl/fuji-track-elite-carbon-citrus-frameset-2018.html"
+  },
+  {
+    "id": 3,
+    "name": " MIGHTY CRANKSET 165MM 46T",
+    "brand": "Mighty",
+    "price": 35.9,
+    "partId": 4,
+    "email": "Eddie.Merckx@hogent.be",
+    "link": "https://www.santafixie.nl/mighty-track-paars-crankset-165mm-46.html"
+  }
+]

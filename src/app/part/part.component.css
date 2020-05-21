@@ -1,7 +1,7 @@
 mat-card
 {
     width: 730px;
-    height: 200px;
+    margin-bottom: 20px;
 }
 
 .scroll
@@ -10,6 +10,9 @@ mat-card
     overflow: auto;
     white-space: nowrap;
     height: 350px;
-    width: 730px;
+    width: 710px;
     
+}
+.scroll::-webkit-scrollbar {
+    display: none;
 }

@@ -11,10 +11,27 @@
 {
     
     width:250px;
-    height:200px;
+    height:172px;
     background-color: whitesmoke;
     overflow: hidden;
     
+}
+
+.imageAlt
+{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title
+{
+    
+    overflow: hidden;
+}
+
+p
+{
+    margin-left: 10px;
 }
 
 
