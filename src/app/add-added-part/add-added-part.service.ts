@@ -17,13 +17,13 @@ export class AddAddedPartService {
   public addAddedPart(addedPart: AddedPart): Observable<AddedPart>
   {
     
-    console.log(addedPart);
+    
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     return this.http.post<AddedPart>(`${environment.apiUrl}/AddedParts/`, addedPart, {headers: headers})
     .pipe(
       map((a :any):AddedPart => 
       { 
-        console.log(a);
+        
         return AddedPart.fromJson(a);
       })
     );
@@ -35,7 +35,7 @@ export class AddAddedPartService {
       
       const formData = new FormData();
       formData.append('file', file, file.name);
-      console.log(file);
+      
       return this.http.post(`${environment.apiUrl}/AddedParts/addImage/${partId}`, formData).pipe(
         map((a: any): string => a)
       );

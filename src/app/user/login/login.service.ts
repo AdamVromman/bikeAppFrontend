@@ -57,14 +57,14 @@ export class LoginService {
       .pipe(
         catchError(this.handleError),
         map((token: any) => {
-          console.log(this.errorString);
+          
           if (token) {
             localStorage.setItem(this._tokenKey, token);
             this._user$.next(email);
-            console.log(this.errorString);
+            
             return true;
           } else {
-            console.log(this.errorString);
+            
             return false;
           }
         })

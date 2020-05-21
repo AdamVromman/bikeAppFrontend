@@ -99,7 +99,7 @@ export class RegisterComponent implements OnInit {
                 
               }
             } else {
-              console.log("foutje");
+            
             }
           }
         );

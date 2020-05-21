@@ -37,7 +37,7 @@ export class BikeListComponent implements OnInit {
         this._bikeDataService.getBike$(d['name']).subscribe(b => 
       {
         this.selectedBike = b;
-        console.log(b);
+      
       }
       )}
     });
