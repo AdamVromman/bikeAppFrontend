@@ -1,169 +1,267 @@
 [
-{
-    "id":1,
-    "name":"Fixie",
-    "type":"Single-speed track",
-    "parts":
-        [
-            {
-                "id":1,
-                "name":"Stuur",
-                "description":"Het stuur is een metalen buis die er voor zorgt dat je de richting kan kiezen waarin je stuurt",
-                "functionality":"Sturen",
-                "isOptional":false,
-                "dependantParts":["Bel"],
-                "dominantParts":["Stuurpen"],
-                "bikeId":[1]
-            },
-            {
-                "id":2,
-                "name":"Bel",
-                "description":"De bel wordt gebruikt als geluidssignal om andere weggebruikers te signaliseren",
-                "functionality":"Varia",
-                "isOptional":true,
-                "dependantParts":[],
-                "dominantParts":["Stuur"],
-                "bikeId":[1]
-            },
-            {
-                "id":3,
-                "name":"Bottombracket",
-                "description":"De Bottom Bracket is de motor van de Bike. Het Part zit tussen de twee pedalen en zorgt dat de pedalen goed draaien.",
-                "functionality":"Aandrijving",
-                "isOptional":false,
-                "dependantParts":["Crankset"],
-                "dominantParts":["Kader"],"bikeId":[1]
-            },
-            {
-                "id":4,
-                "name":"Crankset",
-                "description":"De crankset zal voor de meeste mensen bekend staan als de pedalen.",
-                "functionality":"Aandrijving",
-                "isOptional":false,
-                "dependantParts":["Ketting","Pedalen"],
-                "dominantParts":["Bottombracket"],
-                "bikeId":[1]
-            },
-            {
-                "id":5,
-                "name":"Buitenband",
-                "description":"De buitenband dient als bescherming voor de binnenband. Ook zorgen de groeven voor waterafleiding en grip op de weg",
-                "functionality":"Remmen",
-                "isOptional":false,
-                "dependantParts":[],
-                "dominantParts":["Binnenband","Voorwiel","Achterwiel"],
-                "bikeId":[1]
-            },
-            {
-                "id":6,
-                "name":"Binnenband",
-                "description":"De binnenband bevat lucht. De lucht vangt de schokken van de weg gedeeltelijk op.",
-                "functionality":"Aandrijving",
-                "isOptional":false,
-                "dependantParts":["Buitenband"],
-                "dominantParts":["Voorwiel","Achterwiel"],
-                "bikeId":[1]
-            },
-            {
-                "id":7,
-                "name":"Voorwiel",
-                "description":"Het voorwiel is het wiel dat aan je voorvoor/stuur vasthangt en niet wordt aangedreven, maar gewoon meerijdt.",
-                "functionality":"Sturen",
-                "isOptional":false,
-                "dependantParts":["Buitenband","Binnenband"],
-                "dominantParts":["Voorvork"],
-                "bikeId":[1]
-            },
-            {
-                "id":8,
-                "name":"Achterwiel",
-                "description":"Het  achterwiel is het onderdeel dat de aandrijving naar de grond overbrengt.",
-                "functionality":"Aandrijving",
-                "isOptional":false,
-                "dependantParts":["Buitenband","Binnenband","Achtertandwiel"],
-                "dominantParts":["Kader"],
-                "bikeId":[1]
-            },
-            {
-                "id":9,
-                "name":"Zadel",
-                "description":"Het zadel is het deel waar je op zit.",
-                "functionality":"Varia",
-                "isOptional":false,
-                "dependantParts":[],
-                "dominantParts":["Zadelpen"],
-                "bikeId":[1]
-            },
-            {
-                "id":10,
-                "name":"Zadelpen",
-                "description":"De Zadelpen voorziet de verbinding tussen zadel en  kader. De hoogte van het zadel kan daar ook mee versteld worden.",
-                "functionality":"Varia",
-                "isOptional":false,
-                "dependantParts":["Zadel"],
-                "dominantParts":["Kader"],
-                "bikeId":[1]
-            },
-            {
-                "id":11,
-                "name":"Kader",
-                "description":"Het kader is het skelet van de fiets. het verbindt alle onderdelen van de fiets",
-                "functionality":"Varia",
-                "isOptional":false,
-                "dependantParts":["Bottombracket","Achterwiel","Zadelpen","Stuurpen","Voorvork"],
-                "dominantParts":[],
-                "bikeId":[1]
-            },
-            {
-                "id":12,
-                "name":"Stuurpen",
-                "description":"De stuurpen is de verbinding tussen het stuur en de voorvork. Het stuur kan ook verhoogt/verlaagt worden.",
-                "functionality":"Sturen",
-                "isOptional":false,
-                "dependantParts":["Stuur"],
-                "dominantParts":["Kader","Voorvork"],
-                "bikeId":[1]
-            },
-            {
-                "id":13,
-                "name":"Achtertandwiel",
-                "description":"Het achterste tandwiel hangt vast aan het achterwiel en drijft via de ketting de fiets aan.",
-                "functionality":"Aandrijving",
-                "isOptional":false,
-                "dependantParts":["Ketting"],
-                "dominantParts":["Achterwiel"],
-                "bikeId":[1]
-            },
-            {
-                "id":14,
-                "name":"Ketting",
-                "description":"De ketting draagt de energie van de pedalen over naar het achterwiel.",
-                "functionality":"Aandrijving",
-                "isOptional":false,
-                "dependantParts":[],
-                "dominantParts":["Crankset","Achtertandwiel"],
-                "bikeId":[1]
-            },
-            {
-                "id":15,
-                "name":"Pedalen",
-                "description":"De pedalen zijn de voetsteunen van de fiets.",
-                "functionality":"Aandrijving",
-                "isOptional":false,
-                "dependantParts":[],
-                "dominantParts":["Crankset"],
-                "bikeId":[1]
-            },
-            {
-                "id":16,
-                "name":"Voorvork",
-                "description":"De voorvork werkt als verbinding tussen het kader, het voorwiel en de stuurpen/het stuur.",
-                "functionality":"Sturen",
-                "isOptional":false,
-                "dependantParts":["Voorwiel","Stuurpen"],
-                "dominantParts":["Kader"],
-                "bikeId":[1]
-            }
-        ]
-}
-]
+    {
+      "id": 1,
+      "name": "Fixie",
+      "type": "Single-speed track",
+      "parts": [
+        {
+          "id": 13,
+          "name": "Achtertandwiel",
+          "description": "Het achterste tandwiel hangt vast aan het achterwiel en drijft via de ketting de fiets aan.",
+          "functionality": "Aandrijving",
+          "isOptional": false,
+          "dependantParts": [
+            "Ketting"
+          ],
+          "dominantParts": [
+            "Achterwiel"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 8,
+          "name": "Achterwiel",
+          "description": "Het  achterwiel is het onderdeel dat de aandrijving naar de grond overbrengt.",
+          "functionality": "Aandrijving",
+          "isOptional": false,
+          "dependantParts": [
+            "Buitenband",
+            "Binnenband",
+            "Achtertandwiel"
+          ],
+          "dominantParts": [
+            "Kader"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 2,
+          "name": "Bel",
+          "description": "De bel wordt gebruikt als geluidssignal om andere weggebruikers te signaliseren",
+          "functionality": "Varia",
+          "isOptional": true,
+          "dependantParts": [],
+          "dominantParts": [
+            "Stuur"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 6,
+          "name": "Binnenband",
+          "description": "De binnenband bevat lucht. De lucht vangt de schokken van de weg gedeeltelijk op.",
+          "functionality": "Aandrijving",
+          "isOptional": false,
+          "dependantParts": [
+            "Buitenband"
+          ],
+          "dominantParts": [
+            "Voorwiel",
+            "Achterwiel"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 3,
+          "name": "Bottombracket",
+          "description": "De Bottom Bracket is de motor van de Bike. Het Part zit tussen de twee pedalen en zorgt dat de pedalen goed draaien.",
+          "functionality": "Aandrijving",
+          "isOptional": false,
+          "dependantParts": [
+            "Crankset"
+          ],
+          "dominantParts": [
+            "Kader"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 5,
+          "name": "Buitenband",
+          "description": "De buitenband dient als bescherming voor de binnenband. Ook zorgen de groeven voor waterafleiding en grip op de weg",
+          "functionality": "Remmen",
+          "isOptional": false,
+          "dependantParts": [],
+          "dominantParts": [
+            "Binnenband",
+            "Voorwiel",
+            "Achterwiel"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 4,
+          "name": "Crankset",
+          "description": "De crankset zal voor de meeste mensen bekend staan als de pedalen.",
+          "functionality": "Aandrijving",
+          "isOptional": false,
+          "dependantParts": [
+            "Ketting",
+            "Pedalen"
+          ],
+          "dominantParts": [
+            "Bottombracket"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 11,
+          "name": "Kader",
+          "description": "Het kader is het skelet van de fiets. het verbindt alle onderdelen van de fiets",
+          "functionality": "Varia",
+          "isOptional": false,
+          "dependantParts": [
+            "Bottombracket",
+            "Achterwiel",
+            "Zadelpen",
+            "Stuurpen",
+            "Voorvork"
+          ],
+          "dominantParts": [],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 14,
+          "name": "Ketting",
+          "description": "De ketting draagt de energie van de pedalen over naar het achterwiel.",
+          "functionality": "Aandrijving",
+          "isOptional": false,
+          "dependantParts": [],
+          "dominantParts": [
+            "Crankset",
+            "Achtertandwiel"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 15,
+          "name": "Pedalen",
+          "description": "De pedalen zijn de voetsteunen van de fiets.",
+          "functionality": "Aandrijving",
+          "isOptional": false,
+          "dependantParts": [],
+          "dominantParts": [
+            "Crankset"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 1,
+          "name": "Stuur",
+          "description": "Het stuur is een metalen buis die er voor zorgt dat je de richting kan kiezen waarin je stuurt",
+          "functionality": "Sturen",
+          "isOptional": false,
+          "dependantParts": [
+            "Bel"
+          ],
+          "dominantParts": [
+            "Stuurpen"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 12,
+          "name": "Stuurpen",
+          "description": "De stuurpen is de verbinding tussen het stuur en de voorvork. Het stuur kan ook verhoogt/verlaagt worden.",
+          "functionality": "Sturen",
+          "isOptional": false,
+          "dependantParts": [
+            "Stuur"
+          ],
+          "dominantParts": [
+            "Kader",
+            "Voorvork"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 16,
+          "name": "Voorvork",
+          "description": "De voorvork werkt als verbinding tussen het kader, het voorwiel en de stuurpen/het stuur.",
+          "functionality": "Sturen",
+          "isOptional": false,
+          "dependantParts": [
+            "Voorwiel",
+            "Stuurpen"
+          ],
+          "dominantParts": [
+            "Kader"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 7,
+          "name": "Voorwiel",
+          "description": "Het voorwiel is het wiel dat aan je voorvoor/stuur vasthangt en niet wordt aangedreven, maar gewoon meerijdt.",
+          "functionality": "Sturen",
+          "isOptional": false,
+          "dependantParts": [
+            "Buitenband",
+            "Binnenband"
+          ],
+          "dominantParts": [
+            "Voorvork"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 9,
+          "name": "Zadel",
+          "description": "Het zadel is het deel waar je op zit.",
+          "functionality": "Varia",
+          "isOptional": false,
+          "dependantParts": [],
+          "dominantParts": [
+            "Zadelpen"
+          ],
+          "bikeId": [
+            1
+          ]
+        },
+        {
+          "id": 10,
+          "name": "Zadelpen",
+          "description": "De Zadelpen voorziet de verbinding tussen zadel en  kader. De hoogte van het zadel kan daar ook mee versteld worden.",
+          "functionality": "Varia",
+          "isOptional": false,
+          "dependantParts": [
+            "Zadel"
+          ],
+          "dominantParts": [
+            "Kader"
+          ],
+          "bikeId": [
+            1
+          ]
+        }
+      ]
+    }
+  ]
